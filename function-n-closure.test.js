@@ -10,16 +10,23 @@ describe('Function and closure', () => {
       return x * 3;
     }
 
-    function compose(){
-        //TODO: implement
+    function compose(f1,f2){
+      return function(value) {
+        return f1(f2(value));
+      };
     }
 
     expect( compose(  add5, mul3)(2) ).toBe(add5(mul3(2)));
   });
 
   test('Should create new user with unique number identifier using increment', () => {
-    function createUser(){
-       //TODO: implement
+    let user = {};
+    let id=1;
+    function createUser(name){
+      user.name = name;
+      user.id = id;
+      id++;
+      return user;
     }
     expect( createUser("Ivan") ).toStrictEqual({ name: 'Ivan', id: 1 });
     expect( createUser("Petr").name ).toBe('Petr');
@@ -28,7 +35,10 @@ describe('Function and closure', () => {
 
   test('Should create function that each time return new value incremented by incrementValue and start from start', () => {
     function createIncrementor(start, incrementValue) {
-      // TODO: implement
+      let value = start - incrementValue;
+      return function increment() {
+        return value += incrementValue;
+      }
     }
 
 
@@ -42,7 +52,7 @@ describe('Function and closure', () => {
     function solution1(from, to) {
       // TODO: fix me
       const result = [];
-      for (var i = from; i <= to; i++) {
+      for (let i = from; i <= to; i++) {
         result.push(function() {
           return i;
         });
@@ -54,8 +64,10 @@ describe('Function and closure', () => {
       // TODO: fix me
       const result = [];
       for (var i = from; i <= to; i++) {
+        let j = i;
         result.push(function() {
-          return i;
+          return j;
+          i++;
         });
       }
       return result;
@@ -73,6 +85,7 @@ describe('Function and closure', () => {
   test('Should works as expected. Fix me', () => {
     let a = 0;
     function foo(callback) {
+      let a = 10;
       function inner() {
         // DON"T CHANGE ME
         a++;
@@ -80,10 +93,12 @@ describe('Function and closure', () => {
       }
       return {
         fromInner: inner,
-        fromCallback: callback
+        fromCallback: callback()
       };
     }
+
     function getCallbackFn() {
+      let a = 0;
       return function callbackFn() {
         // DON'T change me
         a += 2;
@@ -104,10 +119,18 @@ describe('Function and closure', () => {
     expect(fn2.fromCallback()).toBe(4);
   });
 
-  test('Should use private property', () => {
+  test.only('Should use private property', () => {
     // Function should return object with 2 methods: setValue and getValue.
-    function createTestObject(){
-       // TODO: implement
+    function createTestObject() {
+      let value;
+      let obj = {};
+      obj.setValue = function(a){
+        value = a;
+      }
+      obj.getValue = function () {
+        return value;
+      }
+      return obj;
     }
 
     let obj1 = createTestObject();
@@ -122,7 +145,9 @@ describe('Function and closure', () => {
 
   test('Should create multiply function', () => {
     function multiply(a){
-      // TODO: implement
+      return function (b) {
+        return a*b;
+      }
     }
     let mul5 = multiply(5);
     let mul20 = multiply(20);

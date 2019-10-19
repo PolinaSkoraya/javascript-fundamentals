@@ -50,7 +50,6 @@ describe('Function and closure', () => {
 
   test('Fix me. Function creation inside cycle. Find 2 different solutions', () => {
     function solution1(from, to) {
-      // TODO: fix me
       const result = [];
       for (let i = from; i <= to; i++) {
         result.push(function() {
@@ -61,7 +60,6 @@ describe('Function and closure', () => {
     }
 
     function solution2(from, to) {
-      // TODO: fix me
       const result = [];
       for (var i = from; i <= to; i++) {
         let j = i;
@@ -119,7 +117,7 @@ describe('Function and closure', () => {
     expect(fn2.fromCallback()).toBe(4);
   });
 
-  test.only('Should use private property', () => {
+  test('Should use private property', () => {
     // Function should return object with 2 methods: setValue and getValue.
     function createTestObject() {
       let value;
@@ -165,7 +163,8 @@ describe('Function and closure', () => {
 
     function calcCall(func) {
       // TODO: implement
-      return [func, () => 0]; // CHANGE TOO
+      let count = 0;
+      return [function (){count++; return func(); }, () => {return count}]; // CHANGE TOO
     }
 
     const [callFn, getFnCount] = calcCall(fn);
@@ -186,6 +185,17 @@ describe('Function and closure', () => {
   test('Should cache the result of function with single argument', () => {
     function memoize(fn) {
       // TODO: implement
+      let cache = {};
+      return (x) =>{
+        if(x in cache){
+          return cache[x];
+        }
+        else{
+          let result = fn(x);
+          cache[x] = result;
+          return result;
+        }
+      }
     }
 
     // DON'T CHANGE.
@@ -224,6 +234,13 @@ describe('Function and closure', () => {
 
     function logMe(fn) {
       // TODO: implement
+      let name = fn();
+      return  function(){
+        logger.logStart(name);
+        logger.logEnd(name);
+        return name;
+      };
+
     }
 
 
@@ -242,6 +259,17 @@ describe('Function and closure', () => {
 
     function once(fn) {
       // TODO: implement
+      let cache = { result: 0};
+      return function () {
+       if(cache.result != 0){
+        return cache.result;
+       }
+       else {
+         let result = fn();
+         cache.result = result;
+         return result;
+       }
+     };
     }
 
     const initialize = once(init);
@@ -255,8 +283,10 @@ describe('Function and closure', () => {
   test('Creates a function that invokes func with partials prepended to the arguments it receives. ', () => {
     function partial(fn, arg1) {
       // TODO: implement
+      return function (x) {
+        return fn (arg1,x);
+      };
     }
-
 
     //DON'T CHANGE
     function add(a, b) {

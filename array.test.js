@@ -3,8 +3,6 @@ describe('Array', () => {
     const arr1 = [1, 5, 8, 3, 2];
     expect(arr1.indexOf(5)).toBe(1);
     expect(arr1.indexOf(3)).toBe(3);
-
-    // TODO: Write additional its
   });
 
   it('Should return the specified array twice', () => {
@@ -18,7 +16,6 @@ describe('Array', () => {
   it('Convert the number array to  the array of string values', () => {
     expect(convertToStringArr([1, 2, 3]) ).toStrictEqual(['1', '2', '3']);
 
-    // TODO: Write additional its
     function convertToStringArr(arr) {
       return arr.map(item => item.toString());
     }
@@ -27,7 +24,6 @@ describe('Array', () => {
   it('Should return the number of all occurrences of specified item in an array', () => {
     expect( calculateOccurences([1, 2, 1, 4, 1], 1)).toBe(3);
 
-    // TODO: Write additional its
     function calculateOccurences(arr, elem) {
       let result = arr.reduce((sum, x) => sum + (x === elem), 0);
       return result;
@@ -141,10 +137,22 @@ describe('Array', () => {
     ]);
   });
 
-  it('Should return a map of grouped data by key and value selector', function() {
+  it.only('Should return a map of grouped data by key and value selector', function() {
     function group(arr, key){
-      let result = [];
-
+      let map = new Map();
+      for (let i = 0, count = arr.length; i < count; ++i) {
+        let currObj = arr[i];
+        if (map.has(currObj[key])) {
+          console.log(currObj[key]);
+          map.get(currObj[key]).push(currObj.city);
+        }
+        else {
+          console.log(currObj[key]);
+          map.set(currObj[key], [currObj.city]);
+        }
+      }
+      console.log([...map]);
+      return [...map];
     }
 
     let arr = [

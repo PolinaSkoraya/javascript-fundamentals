@@ -2,10 +2,14 @@ const PUT_ANSWER_HERE = Symbol();
 
 describe('Objects', () => {
   it('Should get the value at path of object. If the resolved value is undefined, the defaultValue is returned in its place.', () => {
-    function get(obj, path) {
-        let objKeys = path.split('.');
-
-    }
+      function get(obj, path) {
+          if(path.includes('.')){
+              const separatedPath = path.split('.');
+              return separatedPath.reduce((newPath, currentPath) => newPath[currentPath], obj);
+          } else {
+              return obj[path];
+          }
+      }
 
     expect(get({ a: { b: { c: 3 } } }, 'a')).toStrictEqual({ b: { c: 3 } });
     expect(get({ a: { b: { c: 3 } } }, 'a.b.c')).toBe(3);

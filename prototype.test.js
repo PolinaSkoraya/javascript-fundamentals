@@ -1,6 +1,5 @@
 describe('Prototype', () => {
   it('Should use Function constructor without prototype', () => {
-    // TODO: implement
     function User(name) {
       this.name = name,
       this.sayHello = function () {
@@ -66,7 +65,6 @@ describe('Prototype', () => {
       constructor - accept object width property data, that should be returned from getData
     */
 
-    // TODO: implement
     function Component(obj) {
         this.data = {};
         for (let key in obj.data) {
@@ -99,8 +97,6 @@ describe('Prototype', () => {
        logout - set data.name undefined
      */
 
-
-    // TODO: implement
     function UserComponent(obj) {
         Component.apply(this, arguments);
         this.render = function () {
@@ -157,12 +153,10 @@ describe('Prototype', () => {
   it.only('Should extend Child class from Parent ', () => {
     // Component and  UserComponent has requirement from previous test
 
-    // TODO: implement
     function extend(Child, Parent) {
         Child.prototype = Parent.prototype;
     }
 
-    // TODO: implement
     function Component(obj) {
         this.data = {};
         for (let key in obj.data) {
@@ -186,8 +180,7 @@ describe('Prototype', () => {
             return '';
         };
     }
-    
-    // TODO: implement
+
     // NOTE: for inheritance should be used extend method
       function UserComponent(obj) {
        // Component.apply(this, arguments);
@@ -251,7 +244,6 @@ describe('Prototype', () => {
   });
 
   it('Should use Class declaration for Component and UserComponent', () => {
-    // TODO implement Component and UserComponent from previous tasks using Class declaration
       class Component{
           constructor(obj){
               this.data = {};
@@ -327,9 +319,6 @@ describe('Prototype', () => {
       userComponent.login('Tom');
       userComponent.setData({ msg: 'Greetings' });
       expect(userComponent.render()).toBe('Greetings, Tom!');
-
-
-    // TODO: write own test, see previous task as example
   });
 
   it('Should use Object.create for extending one object from another', () => {

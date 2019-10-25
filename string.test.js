@@ -9,8 +9,6 @@ describe("Strings", () => {
   }
 
   it("Should join two strings with a space.", () => {
-    // TODO: write 2 function with different way for join string
-
     expect(combine1("hello", "world")).toBe("hello world");
     expect(combine2("hello", "world")).toBe("hello world");
   });

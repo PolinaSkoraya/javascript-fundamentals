@@ -162,7 +162,7 @@ describe('Function and closure', () => {
     }
 
     function calcCall(func) {
-      // TODO: implement
+
       let count = 0;
       return [function (){count++; return func(); }, () => {return count}]; // CHANGE TOO
     }
@@ -184,7 +184,6 @@ describe('Function and closure', () => {
 
   test('Should cache the result of function with single argument', () => {
     function memoize(fn) {
-      // TODO: implement
       let cache = {};
       return (x) =>{
         if(x in cache){
@@ -233,7 +232,6 @@ describe('Function and closure', () => {
     }
 
     function logMe(fn) {
-      // TODO: implement
       let name = fn();
       return  function(){
         logger.logStart(name);
@@ -258,7 +256,6 @@ describe('Function and closure', () => {
     }
 
     function once(fn) {
-      // TODO: implement
       let cache = { result: 0};
       return function () {
        if(cache.result != 0){
@@ -282,7 +279,6 @@ describe('Function and closure', () => {
 
   test('Creates a function that invokes func with partials prepended to the arguments it receives. ', () => {
     function partial(fn, arg1) {
-      // TODO: implement
       return function (x) {
         return fn (arg1,x);
       };

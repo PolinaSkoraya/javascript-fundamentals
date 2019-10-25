@@ -28,7 +28,6 @@ describe("Function basic", () => {
     }
 
   test("Should get arguments length", () => {
-    // TODO: Declare 3 functions (withoutArguments, withOneArgument, withTwoArguments ) with different quantity of named arguments
     expect( withoutArguments() ).toBe(0);
     expect( withOneArgument(1) ).toBe(1);
     expect( withTwoArguments(1, 2) ).toBe(2);

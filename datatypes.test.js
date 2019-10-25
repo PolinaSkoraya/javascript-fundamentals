@@ -80,7 +80,7 @@ describe("Data types", () => {
       expect(b*a+c).toBe(400);
       expect(a*c+a*c).toBe(2000);
       expect(b*c+b*a).toBe(3300);
-      // TODO: write 3 own test
+
       expect(b/a+c).toBe(103);
       expect(a/c*b).toBe(3);
       expect(c/a+b/a).toBe(13);
@@ -124,7 +124,6 @@ describe("Data types", () => {
       expect(typeof obj).toBe("object");
       expect(Object.keys(obj).length).toBe(2);
 
-      // TODO: write 2 own tests
       expect(Object.values(obj).length).toBe(2);
       expect(Object.entries(obj).length).toBe( 2);
     });

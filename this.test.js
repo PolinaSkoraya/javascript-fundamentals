@@ -22,7 +22,6 @@ describe('THIS', () => {
     const tom = { name: 'Tom', age: 22 };
     const bob = { name: 'Bob', get: 50 };
 
-    // TODO: fix
     const getTomName = fn.bind(tom);
     const getBobName = fn.bind(bob);
 
@@ -42,7 +41,6 @@ describe('THIS', () => {
       }
     };
 
-    // TODO: FIX ME
     const sayHello = person.sayHello.bind(person);
 
     expect(sayHello()).toBe(person.sayHello());

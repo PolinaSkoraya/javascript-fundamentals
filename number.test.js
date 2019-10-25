@@ -45,7 +45,6 @@ describe("Numbers", () => {
     expect( isPrime(7) ).toBe(true);
     expect( isPrime(4) ).toBe(false);
 
-    // TODO: Write additional tests
   });
 
   function convert(str){
@@ -71,8 +70,6 @@ describe("Numbers", () => {
   }
 
   test("Should find highest value", () => {
-    // TODO: Write 2 functions max and max2. Only one of them should use Math
-
     expect(max(1, 2) ).toBe(2);
     expect( max2(1, 7, 2, 8, 5) ).toBe(8);
   });
@@ -94,7 +91,6 @@ describe("Numbers", () => {
   test("Should find lowest value", () => {
     expect( min(2, 3, 9, 4, 1, 5) ).toBe(1);
     expect( min2(2, 3, 9, 4, 1, 5) ).toBe(1);
-    // TODO: Write additional tests
   });
 
 
@@ -110,8 +106,6 @@ describe("Numbers", () => {
     expect(Math.floor(1)).toBe(1);
     expect(Math.floor(1.2)).toBe(1);
     expect(Math.floor(1.8)).toBe(1);
-
-    // TODO: Write additional tests
   });
 
   test("Should return the base10 representation of a binary string", function() {
